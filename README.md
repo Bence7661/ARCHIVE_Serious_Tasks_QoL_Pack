@@ -13,6 +13,21 @@ So far I got good results hence why I dare to share this mod(pack) with you guys
 - **The Northern Job**
 - **PDA Taskboard Fix** (Only available within this pack)
 
+# PDA Taskboard Fix
+So let's talk about this one. There is a bug with the PDA taskboard.  
+Sometimes tasks can appear in the wrong place resulting in you accepting a task you didn't intend to.  
+This probably has to do something with map blacklisting.   
+When I tested what can cause it I basically blacklisted all maps from the map pool and the bug occured 90% of the time.  
+  
+**The Job Can Wait** and **The Northern Job** enhanced this bug and made it appear more frequently. I spent the last 2 days troubleshooting, thinking about the best solution.  
+The original implementation relied on an array having items in the same order as a different array. This is a very brittle thing I'm surprised it doesn't break more often.  
+
+My solution to this problem: I modified all methods (ones I could find at least) that can affect the second array and gave it the TaskId as the key. This way I can just give it a TaskId when I need additional info about a task and it will always return the correct information.  
+  
+Added 2 failsafes too.
+1. Created a second array that is the copy of the first, but as key it has the task's title (I need this for iTheon tasks because I didn't figure out a way or didn't find where I should implement code to pass TaskId).
+1. I left the original implementation as a 3rd failsafe just in case my modifications fail. So at worst you guys get back the old taskboard. At best you get a fixed one.
+
 # Installation instructions
 If you have any of these enabled: **The Job Can Wait**, **The Northern Job** disable them.
 Drop this mod at highest priority as it overwrites a lot of files.
