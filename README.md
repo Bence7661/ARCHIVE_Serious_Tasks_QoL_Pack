@@ -1,5 +1,5 @@
 # Tasks QoL Pack
-[BETA] - This is mainly because of **PDA Taskboard Fix**  
+v1.0.0
 
 A modpack consisting of my task related QoL mods.  
 I decided to bundle together 3 of my mods because all depend on each other. If need be I can eliminate the dependency, but for now I just release it as a pack instead.
